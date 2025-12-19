@@ -43,6 +43,7 @@ ghostty
 git
 github-cli
 gitleaks
+glab
 gnome-calculator
 gnome-disk-utility
 gnome-keyring
@@ -118,6 +119,7 @@ pipewire-pulse
 playerctl
 plocate
 plymouth
+pnpm
 polkit-gnome
 postgresql-libs
 power-profiles-daemon

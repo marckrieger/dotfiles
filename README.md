@@ -44,3 +44,9 @@ gh auth login
 ```bash
 glab auth login
 ```
+
+# Maintenance and Updates
+- Update the package list when installing new packages:
+```bash
+pacman -Qqe > ~/dotfiles/omarchy/pkglist.txt
+```
