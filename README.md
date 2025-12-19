@@ -1,21 +1,43 @@
 # Setup
-1. Clone repo
-2. Install packages:
+
+## 1. Clone the Repo
+```bash
+git clone [https://github.com/marckrieger/dotfiles.git](https://github.com/marckrieger/dotfiles.git) ~/dotfiles
+cd ~/dotfiles
+```
+
+## 2. Installation (Choose One)
+### Option A: Automatic Setup (Not tested yet)
+```bash
+chmod +x install.sh
+./install.sh
+```
+### Option B: Manual Setup
+<details>
+<summary></summary>
+
+**2.1.** Install packages:
 ```bash
 yay -S --needed - < ~/dotfiles/omarchy/pkglist.txt
 ```
-3. Apply configs:
+**2.2.** Apply configs:
 ```bash
 cd ~/dotfiles
-stow omarchy
+stow --adopt omarchy
 ```
-4. Enable hooks:
+**2.3.** Enable hooks:
 ```bash
 git config core.hooksPath .githooks
 ```
-5. Setup Bitwarden
-6. Sign into VSCode
-7. Setup git:
+
+</details>
+
+## 3. Sign ins
+**3.1.** Setup Bitwarden
+
+**3.2.** Sign into VSCode
+
+**3.3.** Setup git:
 ```bash
 gh auth login
 ```
