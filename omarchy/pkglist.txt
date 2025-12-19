@@ -13,6 +13,7 @@ bitwarden-cli
 bluetui
 bolt
 brightnessctl
+bruno
 btop
 btrfs-progs
 clang
