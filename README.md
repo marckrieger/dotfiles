@@ -9,8 +9,8 @@ cd ~/dotfiles
 ## 2. Installation (Choose One)
 ### Option A: Automatic Setup (Not tested yet)
 ```bash
-chmod +x install.sh
-./install.sh
+chmod +x setup.sh
+./setup.sh
 ```
 ### Option B: Manual Setup
 <details>
