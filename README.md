@@ -2,7 +2,7 @@
 
 ## 1. Clone the Repo
 ```bash
-git clone [https://github.com/marckrieger/dotfiles.git](https://github.com/marckrieger/dotfiles.git) ~/dotfiles
+git clone https://github.com/marckrieger/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ```
 
