@@ -4,6 +4,7 @@ aether
 alacritty
 amd-ucode
 asdcontrol
+aspnet-runtime-8.0
 base
 base-devel
 bash-completion
@@ -16,14 +17,18 @@ brightnessctl
 bruno
 btop
 btrfs-progs
+chromium
 clang
 cups
 cups-browsed
 cups-filters
 cups-pdf
+cursor-bin
 docker
 docker-buildx
 docker-compose
+dotnet-runtime-9.0
+dotnet-sdk-8.0
 dust
 efibootmgr
 egl-wayland
@@ -37,9 +42,12 @@ fcitx5-gtk
 fcitx5-qt
 fd
 ffmpegthumbnailer
+firefox
 fontconfig
+freerdp
 fzf
 ghostty
+gimp
 git
 github-cli
 gitleaks
@@ -106,10 +114,11 @@ nvidia-open-dkms
 nvidia-utils
 obs-studio
 obsidian
-omarchy-chromium
 omarchy-keyring
 omarchy-nvim
 omarchy-walker
+openbsd-netcat
+opencode
 pamixer
 pinta
 pipewire
@@ -144,6 +153,7 @@ sushi
 swaybg
 swayosd
 system-config-printer
+termius
 tldr
 tobi-try
 tree-sitter-cli
@@ -173,5 +183,6 @@ xmlstarlet
 xournalpp
 yaru-icon-theme
 yay
+yq
 zoxide
 zram-generator
