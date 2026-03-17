@@ -1,0 +1,6 @@
+chezmoi
+fprintd
+google-chrome
+pnpm
+tailscale
+visual-studio-code-bin

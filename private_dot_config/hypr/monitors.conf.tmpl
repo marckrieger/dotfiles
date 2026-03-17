@@ -1,0 +1,23 @@
+# See https://wiki.hyprland.org/Configuring/Monitors/
+# List current monitors and resolutions possible: hyprctl monitors
+# Format: monitor = [port], resolution, position, scale
+
+{{- if eq .chezmoi.hostname "thinkpad" }}
+
+# ThinkPad X1 Carbon Gen 9 + LG 4K Monitor
+env = GDK_SCALE,2
+
+# LG 4K - left (effective resolution: 2560x1440)
+monitor=HDMI-A-1,3840x2160@60,0x0,1.5
+
+# ThinkPad - right (effective resolution: 1280x800)
+# X = 2560 (LG effective width), Y = 320 (vertically centered: (1440-800)/2)
+monitor=eDP-1,1920x1200@60,2560x640,1.5
+
+{{- else }}
+
+# Default: auto-detect
+env = GDK_SCALE,2
+monitor=,preferred,auto,auto
+
+{{- end }}

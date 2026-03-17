@@ -1,0 +1,28 @@
+#!/bin/bash
+set -euo pipefail
+
+# Install packages from the managed package list
+PACKAGE_FILE="{{ .chezmoi.homeDir }}/.config/omarchy/packages.txt"
+
+if [[ ! -f "$PACKAGE_FILE" ]]; then
+    echo "Package file not found, skipping"
+    exit 0
+fi
+
+echo "Installing user packages..."
+while IFS= read -r pkg; do
+    pkg=$(echo "$pkg" | xargs) # trim whitespace
+    [[ -z "$pkg" || "$pkg" == \#* ]] && continue
+
+    if ! pacman -Qi "$pkg" &>/dev/null; then
+        echo "Installing: $pkg"
+        if pacman -Si "$pkg" &>/dev/null; then
+            sudo pacman -S --noconfirm "$pkg"
+        else
+            # Try AUR via omarchy helper
+            omarchy-pkg-aur-add "$pkg" 2>/dev/null || echo "Failed to install $pkg"
+        fi
+    fi
+done < "$PACKAGE_FILE"
+
+echo "Package installation complete."

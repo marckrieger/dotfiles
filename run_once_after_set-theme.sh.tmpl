@@ -1,0 +1,19 @@
+#!/bin/bash
+set -euo pipefail
+
+THEME_FILE="{{ .chezmoi.homeDir }}/.config/omarchy/theme.txt"
+
+if [[ ! -f "$THEME_FILE" ]]; then
+    echo "Theme file not found, skipping"
+    exit 0
+fi
+
+DESIRED_THEME=$(cat "$THEME_FILE" | xargs)
+CURRENT_THEME=$(omarchy-theme-current 2>/dev/null || echo "")
+
+if [[ "$DESIRED_THEME" != "$CURRENT_THEME" ]]; then
+    echo "Setting theme to: $DESIRED_THEME"
+    omarchy-theme-set "$DESIRED_THEME"
+else
+    echo "Theme already set to: $DESIRED_THEME"
+fi
