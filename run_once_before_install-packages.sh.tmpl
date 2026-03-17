@@ -1,28 +1,23 @@
 #!/bin/bash
 set -euo pipefail
 
-# Install packages from the managed package list
 PACKAGE_FILE="{{ .chezmoi.homeDir }}/.config/omarchy/packages.txt"
+[[ ! -f "$PACKAGE_FILE" ]] && exit 0
 
-if [[ ! -f "$PACKAGE_FILE" ]]; then
-    echo "Package file not found, skipping"
-    exit 0
-fi
-
-echo "Installing user packages..."
+MISSING=()
 while IFS= read -r pkg; do
-    pkg=$(echo "$pkg" | xargs) # trim whitespace
+    pkg=$(echo "$pkg" | xargs)
     [[ -z "$pkg" || "$pkg" == \#* ]] && continue
-
-    if ! pacman -Qi "$pkg" &>/dev/null; then
-        echo "Installing: $pkg"
-        if pacman -Si "$pkg" &>/dev/null; then
-            sudo pacman -S --noconfirm "$pkg"
-        else
-            # Try AUR via omarchy helper
-            omarchy-pkg-aur-add "$pkg" 2>/dev/null || echo "Failed to install $pkg"
-        fi
-    fi
+    pacman -Qi "$pkg" &>/dev/null || MISSING+=("$pkg")
 done < "$PACKAGE_FILE"
 
-echo "Package installation complete."
+[[ ${#MISSING[@]} -eq 0 ]] && exit 0
+
+echo "📦 Installing ${#MISSING[@]} package(s): ${MISSING[*]}"
+for pkg in "${MISSING[@]}"; do
+    if pacman -Si "$pkg" &>/dev/null; then
+        sudo pacman -S --noconfirm --quiet "$pkg" 2>/dev/null
+    else
+        omarchy-pkg-aur-add "$pkg" 2>/dev/null || echo "  ✗ $pkg"
+    fi
+done
