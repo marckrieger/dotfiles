@@ -1,4 +1,3 @@
-chezmoi
 fprintd
 google-chrome
 pnpm
