@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-DESIRED="google-chrome-stable.desktop"
+DESIRED="google-chrome.desktop"
 CURRENT=$(xdg-settings get default-web-browser 2>/dev/null || echo "")
 
 if [[ "$CURRENT" != "$DESIRED" ]]; then
