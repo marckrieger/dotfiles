@@ -11,14 +11,17 @@ chezmoi init --apply git@github.com:marckrieger/dotfiles.git
 This will:
 1. Generate an SSH key (if missing) and print the public key
 2. Install user packages via pacman/AUR
-3. Deploy config files (bindings, monitors, theme, backgrounds)
+3. Deploy config files (bindings, monitors, input, theme, backgrounds)
 4. Set the omarchy theme
+5. Set Google Chrome as default browser
+6. Enable and start Tailscale
 
 ## What's managed
 
 | File | Scope |
 |------|-------|
 | `~/.config/hypr/bindings.conf` | Shared across devices |
+| `~/.config/hypr/input.conf` | Shared (touchpad, keyboard) |
 | `~/.config/hypr/monitors.conf` | Per-device (templated by hostname) |
 | `~/.config/omarchy/packages.txt` | User-installed packages (not omarchy defaults) |
 | `~/.config/omarchy/theme.txt` | Per-device theme |
