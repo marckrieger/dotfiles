@@ -15,6 +15,7 @@ This will:
 4. Set the omarchy theme
 5. Set Google Chrome as default browser
 6. Enable and start Tailscale
+7. Set Limine boot timeout to 0 (if Limine is the bootloader)
 
 ## What's managed
 
