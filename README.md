@@ -5,7 +5,7 @@
 ## Bootstrap a new device
 
 ```bash
-chezmoi init --apply git@github.com:marckrieger/dotfiles.git
+chezmoi init --apply https://github.com/marckrieger/dotfiles.git
 ```
 
 This will:
@@ -16,6 +16,7 @@ This will:
 5. Set Google Chrome as default browser
 6. Enable and start Tailscale
 7. Set Limine boot timeout to 0 (if Limine is the bootloader)
+8. Switch the chezmoi remote from HTTPS to SSH
 
 ## What's managed
 
