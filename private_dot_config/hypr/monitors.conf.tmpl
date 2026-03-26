@@ -14,6 +14,17 @@ monitor=HDMI-A-1,3840x2160@60,0x0,1.5
 # X = 2560 (LG effective width), Y = 320 (vertically centered: (1440-800)/2)
 monitor=eDP-1,1920x1200@60,2560x640,1.5
 
+{{- else if eq .chezmoi.hostname "desktop" }}
+
+# Desktop - Dual LG HDR 4K (effective resolution: 2560x1440 each)
+env = GDK_SCALE,2
+
+# LG 4K (DP-1) - left
+monitor=DP-1,3840x2160@60,0x0,1.5
+
+# LG 4K (HDMI-A-1) - right
+monitor=HDMI-A-1,3840x2160@60,2560x0,1.5
+
 {{- else }}
 
 # Default: auto-detect
