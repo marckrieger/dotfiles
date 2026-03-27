@@ -2,6 +2,27 @@
 
 [Omarchy](https://omarchy.org/) dotfiles managed with [chezmoi](https://chezmoi.io/).
 
+## Keep changes in sync
+
+Edit existing config:
+```bash
+chezmoi edit ~/.config/
+```
+
+Track a new config file:
+```bash
+chezmoi add
+```
+
+Sync changes:
+
+```bash
+chezmoi cd
+git add .
+git commit -m "Sync updates"
+git push
+```
+
 ## Bootstrap a new device
 
 ```bash
