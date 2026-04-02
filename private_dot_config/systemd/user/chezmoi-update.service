@@ -1,0 +1,11 @@
+[Unit]
+Description=Pull and apply chezmoi dotfiles
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/chezmoi update --force
+
+[Install]
+WantedBy=default.target
