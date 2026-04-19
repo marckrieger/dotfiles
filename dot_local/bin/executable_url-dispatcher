@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# URL dispatcher — routes specific domains to their webapp windows,
+# falls back to the default browser for everything else.
+
+# Resolve the actual browser binary (same logic as omarchy-launch-webapp).
+_resolve_browser() {
+  for b in google-chrome-stable brave-browser microsoft-edge-stable chromium; do
+    command -v "$b" &>/dev/null && echo "$b" && return
+  done
+  echo "xdg-open"
+}
+
+url="$1"
+
+case "$url" in
+  *claude.ai/*)
+    exec omarchy-launch-or-focus-webapp "claude.ai" "$url"
+    ;;
+  *gemini.google.com/*)
+    exec omarchy-launch-or-focus-webapp "gemini.google.com" "$url"
+    ;;
+  *calendar.google.com/*)
+    exec omarchy-launch-or-focus-webapp "calendar.google.com" "$url"
+    ;;
+  *outlook.office.com/*)
+    exec omarchy-launch-or-focus-webapp "outlook.office.com" "$url"
+    ;;
+  *mail.proton.me/*)
+    exec omarchy-launch-or-focus-webapp "mail.proton.me" "$url"
+    ;;
+  *github.com/*)
+    exec omarchy-launch-or-focus-webapp "github.com" "$url"
+    ;;
+  *youtube.com/* | *youtu.be/*)
+    exec omarchy-launch-or-focus-webapp "youtube.com" "$url"
+    ;;
+  *app.holded.com/*)
+    exec omarchy-launch-or-focus-webapp "holded" "$url"
+    ;;
+  *web.whatsapp.com/*)
+    exec omarchy-launch-or-focus-webapp "WhatsApp" "$url"
+    ;;
+  *photos.google.com/*)
+    exec omarchy-launch-or-focus-webapp "Google Photos" "$url"
+    ;;
+  *linear.app/*)
+    exec omarchy-launch-or-focus-webapp "linear" "$url"
+    ;;
+  *excalidraw.com/*)
+    exec omarchy-launch-or-focus-webapp "excalidraw" "$url"
+    ;;
+  *notion.so/* | *notion.site/*)
+    exec omarchy-launch-or-focus-webapp "notion" "$url"
+    ;;
+  *)
+    exec "$(_resolve_browser)" "$@"
+    ;;
+esac
