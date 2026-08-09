@@ -7,12 +7,11 @@
 # ThinkPad X1 Carbon Gen 9 + external 4K monitor
 env = GDK_SCALE,2
 
-# LG 4K - left (effective resolution: 2560x1440)
-monitor=HDMI-A-1,3840x2160@60,0x0,1.5
+# Any external display - left, regardless of its connector name
+monitor=,preferred,auto-center-left,1.5
 
 # ThinkPad - right (effective resolution: 1280x800)
-# X = 2560 (LG effective width), Y = 320 (vertically centered: (1440-800)/2)
-monitor=eDP-1,1920x1200@60,2560x640,1.5
+monitor=eDP-1,1920x1200@60,auto-center-right,1.5
 
 {{- else if eq .chezmoi.hostname "desktop" }}
 
